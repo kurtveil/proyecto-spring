@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<h3 th:text="${titulo}"></h3>
+
+	<form th:action="@{/form}" th:object="${usuario}" method="post">
+
+
+		<div>
+			<label for="pais">Pais</label>
+			<div>
+				<select id="pais" th:field="*{pais}">
+				<option value="">-- seleccionar --</option>
+				<option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
+				</select>
+			</div>
+			<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+		</div>
+		<div>
+			<label for="identificador">Identificador</label>
+			<div>
+				<input id="identificador" type="text" th:field="*{identificador}">
+			</div>
+			<div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+		</div>
+		<div>
+			<label for="nombre">Nombre</label>
+			<div>
+				<input id="nombre" type="text" th:field="*{nombre}">
+			</div>
+			<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+		</div>
+		<div>
+			<label for="apellido">Apellido</label>
+			<div>
+				<input id="apellido" type="text" th:field="*{apellido}">
+			</div>
+			<div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+		</div>
+		<div>
+			<label for="username">Usuario</label>
+			<div>
+				<input id="username" type="text" th:field="*{username}">
+			</div>
+			<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+		</div>
+		<div>
+			<label for="password">Contraseña</label>
+			<div>
+				<input th:field="*{password}" id="password" type="password">
+			</div>
+			<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+		</div>
+		<div>
+			<label for="email">Correo</label>
+			<div>
+				<input th:field="*{email}" id="email" type="text">
+			</div>
+			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+		</div>
+			<div>
+			<label for="cuenta">Cuenta</label>
+			<div>
+				<input th:field="*{cuenta}" id="cuenta" type="number">
+			</div>
+			<div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
+		</div>
+			<div>
+			<label for="fechaNacimiento">Fecha Nacimiento</label>
+			<div>
+				<input th:field="*{fechaNacimiento}" id="fechaNacimiento" type="date" placeholder="yyyy/MM/dd">
+			</div>
+			<div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+		</div>
+		<div>
+			<div>
+				<input type="submit" value="Enviar">
+			</div>
+		</div>
+	</form>
+</body>
+</html>
